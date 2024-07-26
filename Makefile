@@ -32,3 +32,10 @@ getversion:
 
 clean:
 	rm -rf kbot
+	docker image rmi ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
+
+linux:
+	CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH} go build -o kbot -v -ldflags "-X=github.com/vvadymv/kbot/cmd.appVersion=${VERSION}"
+
+arm:
+	CGO_ENABLED=0 GOOS=windows GOARCH=${TARGETARCH} go build -o kbot -v -ldflags "-X=github.com/vvadymv/kbot/cmd.appVersion=${VERSION}"
