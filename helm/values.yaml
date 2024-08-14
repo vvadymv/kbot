@@ -1,0 +1,31 @@
+# Default values for helm.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: vadymv
+  # Overrides the image tag whose default is the chart appVersion.
+  name: kbot
+  tag: "v1.1.0-7082524"
+  arch: amd64
+
+secret:
+  name: kbot
+  env: TELE_TOKEN
+  key: token
+
+serviceAccount:
+  create: false
+
+autoscaling:
+  enabled: false
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+
