@@ -47,7 +47,7 @@ jobs:
       - name: Update helm tag
         uses: mikefarah/yq@master
         with:
-          cmd: yq -i '.image.tag=strenv${VERSION}' helm/values.yaml
+          cmd: yq -i '.image.tag=strenv(VERSION)' helm/values.yaml
 
       - name: Commit changes 
         run: |
