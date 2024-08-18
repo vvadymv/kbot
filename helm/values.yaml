@@ -7,7 +7,7 @@ image:
   repository: vadymv
   # Overrides the image tag whose default is the chart appVersion.
   name: kbot
-  tag: "v1.1.1-42cae20"
+  tag: "v1.1.1-ed89eff"
   arch: amd64
 secret:
   name: kbot
