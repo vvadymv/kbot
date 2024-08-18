@@ -8,6 +8,8 @@ jobs:
   ci:
     name: CI
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
 
     steps:
       - name: Checkout
@@ -26,7 +28,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build&Push ghcr.io
-        uses: docker/build-push-action@v3
+        #uses: docker/build-push-action@v3
         env:
           APP: "kbot"
         run: make image push
