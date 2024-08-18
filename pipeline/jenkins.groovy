@@ -15,9 +15,9 @@ pipeline {
         stage('Echo') {
             steps {
                 echo "Build for platform ${params.OS}"
-
                 echo "Build for arch: ${params.ARCH}"
-
+                echo "User group membership"
+                sh "id"
             }
         }
 
@@ -45,25 +45,30 @@ pipeline {
         stage('image') {
             steps {
                 echo 'Docker image build started'
-                sh "make test"
+                sh "make image_ghcr"
             }
         }
 
         stage('login to GHCR') {
             steps {
                 echo 'Login to container repo'
-                sh "echo $GITHUB_TOKEN_PSW | docker login ghcr.io -u $GITHUB_TOKEN_USR --password-stdin"
+                script {
+                    withCredentials([
+                        string(credentialsId: 'GITHUB_TOKEN_PSW', variable: 'GITHUB_TOKEN_PSW'),
+                        string(credentialsId: 'GITHUB_TOKEN_USR', variable: 'GITHUB_TOKEN_USR')
+                    ]) {
+                        sh "echo $GITHUB_TOKEN_PSW | docker login ghcr.io -u $GITHUB_TOKEN_USR --password-stdin"
+                    }
+                }
             }
         }
 
         stage('push') {
             steps {
                 echo 'Push to container repo'
-                sh "make push"
+                sh "make push_ghcr"
             }
         }
 
-
     }
-
 }
