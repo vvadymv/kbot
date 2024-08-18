@@ -9,7 +9,7 @@ image:
   name: kbot
   tag: "v1.1.1-ce0bff4"
   arch: amd64
-  targetos: linux
+  os: linux
 secret:
   name: kbot
   env: TELE_TOKEN
