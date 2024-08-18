@@ -4,7 +4,7 @@
 
 replicaCount: 1
 image:
-  repository: vadymv
+  repository: ghcr.io/vvadymv
   # Overrides the image tag whose default is the chart appVersion.
   name: kbot
   tag: "v1.1.1-470fb37"
