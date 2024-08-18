@@ -13,7 +13,7 @@ image:
 secret:
   name: kbot
   env: TELE_TOKEN
-  key: token
+  key: "7353443227:AAEY3azrVQEHRjnJlrHVqlbX2OvPvoahOMU"
 serviceAccount:
   create: false
 autoscaling:
