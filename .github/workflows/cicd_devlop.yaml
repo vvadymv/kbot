@@ -1,4 +1,4 @@
-name: CICD-KBOT
+name: CICD-KBOT-Develop
 
 on:
   push:
