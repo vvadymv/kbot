@@ -31,7 +31,7 @@ jobs:
         #uses: docker/build-push-action@v3
         env:
           APP: "kbot"
-        run: make image push
+        run: make image push_ghcr
           
   cd:
     name: CD
